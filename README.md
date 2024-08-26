@@ -1,6 +1,7 @@
 # Remove Image Background
 
-This is an open-source project that allows users to remove the background from images using AI.
+This is an open-source project that allows users to remove the background from
+images using AI.
 
 ## Features
 
@@ -20,16 +21,19 @@ This is an open-source project that allows users to remove the background from i
 ## Installation
 
 1. Clone the repository:
+
    ```
-   git clone https://github.com/yourusername/remove-image-background.git
+   git clone https://github.com/drumst0ck/remove-bg.git
    ```
 
 2. Navigate to the project directory:
+
    ```
    cd remove-image-background
    ```
 
 3. Build and run the Docker container:
+
    ```
    docker build -t remove-background .
    docker run -p 80:80 remove-background
@@ -39,7 +43,8 @@ This is an open-source project that allows users to remove the background from i
 
 ## Usage
 
-1. Upload an image by clicking on the upload area or dragging and dropping a file.
+1. Upload an image by clicking on the upload area or dragging and dropping a
+   file.
 2. Click the "Remove Background" button.
 3. Wait for the image to be processed.
 4. View the original and processed images side by side.
@@ -50,7 +55,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## Acknowledgments
 
