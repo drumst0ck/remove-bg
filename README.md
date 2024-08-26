@@ -29,14 +29,14 @@ images using AI.
 2. Navigate to the project directory:
 
    ```
-   cd remove-image-background
+   cd remove-bg
    ```
 
 3. Build and run the Docker container:
 
    ```
-   docker build -t remove-background .
-   docker run -p 80:80 remove-background
+   docker build -t remove-bg .
+   docker run -p 80:80 remove-bg
    ```
 
 4. Open your browser and visit `http://localhost:80`
