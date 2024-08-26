@@ -1,51 +1,212 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full bg-gray-100">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Remover Fondo de Imagen</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      h1 {
-        color: #333;
-      }
-      #result {
-        max-width: 100%;
-        margin-top: 20px;
-      }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1>Remover Fondo de Imagen</h1>
-    <form id="uploadForm" enctype="multipart/form-data">
-      <input type="file" name="file" accept="image/*" required />
-      <button type="submit">Remover Fondo</button>
-    </form>
-    <img id="result" style="display: none" />
+  <body class="h-full">
+    <div class="min-h-full">
+      <div class="py-10">
+        <header>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1
+              class="text-3xl font-bold leading-tight tracking-tight text-gray-900"
+            >
+              Remover Fondo de Imagen
+            </h1>
+          </div>
+        </header>
+        <main>
+          <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="px-4 py-8 sm:px-0">
+              <form
+                id="uploadForm"
+                class="space-y-6"
+                enctype="multipart/form-data"
+              >
+                <div class="flex items-center justify-center w-full">
+                  <label
+                    for="fileInput"
+                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 relative overflow-hidden"
+                  >
+                    <div
+                      id="dropArea"
+                      class="flex flex-col items-center justify-center pt-5 pb-6 absolute inset-0"
+                    >
+                      <svg
+                        class="w-10 h-10 mb-3 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                        ></path>
+                      </svg>
+                      <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold">Haz clic para subir</span> o
+                        arrastra y suelta
+                      </p>
+                      <p class="text-xs text-gray-500">
+                        PNG, JPG o GIF (MAX. 800x400px)
+                      </p>
+                    </div>
+                    <img
+                      id="preview"
+                      class="hidden absolute inset-0 w-full h-full object-contain"
+                    />
+                    <input
+                      id="fileInput"
+                      type="file"
+                      name="file"
+                      accept="image/*"
+                      class="hidden"
+                      required
+                    />
+                  </label>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Remover Fondo
+                  </button>
+                </div>
+              </form>
+              <div id="loading" class="mt-4 text-center hidden">
+                <div
+                  class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 transition ease-in-out duration-150 cursor-not-allowed"
+                >
+                  <svg
+                    class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Procesando imagen...
+                </div>
+              </div>
+              <div class="mt-8 flex flex-col sm:flex-row sm:space-x-6">
+                <div class="w-full sm:w-1/2 mb-6 sm:mb-0">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900 mb-2">
+                    Imagen Original
+                  </h3>
+                  <div
+                    class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden"
+                  >
+                    <img id="original" class="object-contain hidden" />
+                  </div>
+                </div>
+                <div class="w-full sm:w-1/2">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900 mb-2">
+                    Imagen Procesada
+                  </h3>
+                  <div
+                    class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden"
+                  >
+                    <img id="result" class="object-contain hidden" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
 
     <script>
-      document
-        .getElementById("uploadForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
+      const fileInput = document.getElementById("fileInput");
+      const preview = document.getElementById("preview");
+      const dropArea = document.getElementById("dropArea");
+      const originalImage = document.getElementById("original");
+      const uploadForm = document.getElementById("uploadForm");
+
+      function handleFile(file) {
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.classList.remove("hidden");
+            dropArea.classList.add("hidden");
+            originalImage.src = e.target.result;
+            originalImage.classList.remove("hidden");
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      fileInput.addEventListener("change", function (e) {
+        handleFile(e.target.files[0]);
+      });
+
+      // Prevenir comportamiento por defecto del navegador
+      ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+        uploadForm.addEventListener(eventName, preventDefaults, false);
+      });
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      // Manejar el drop
+      uploadForm.addEventListener("drop", handleDrop, false);
+
+      function handleDrop(e) {
+        let dt = e.dataTransfer;
+        let file = dt.files[0];
+        fileInput.files = dt.files;
+        handleFile(file);
+      }
+
+      uploadForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        // Mostrar mensaje de carga
+        document.getElementById("loading").classList.remove("hidden");
+
+        try {
           const response = await fetch("/remove-background", {
             method: "POST",
             body: formData,
           });
+
           if (response.ok) {
             const resultImage = document.getElementById("result");
             resultImage.src = URL.createObjectURL(await response.blob());
-            resultImage.style.display = "block";
+            resultImage.classList.remove("hidden");
           } else {
-            alert("Error al procesar la imagen");
+            throw new Error("Error al procesar la imagen");
           }
-        });
+        } catch (error) {
+          alert(error.message);
+        } finally {
+          // Ocultar mensaje de carga
+          document.getElementById("loading").classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
