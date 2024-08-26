@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remover Fondo de Imagen</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      #result {
+        max-width: 100%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Remover Fondo de Imagen</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" required />
+      <button type="submit">Remover Fondo</button>
+    </form>
+    <img id="result" style="display: none" />
+
+    <script>
+      document
+        .getElementById("uploadForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const response = await fetch("/remove-background", {
+            method: "POST",
+            body: formData,
+          });
+          if (response.ok) {
+            const resultImage = document.getElementById("result");
+            resultImage.src = URL.createObjectURL(await response.blob());
+            resultImage.style.display = "block";
+          } else {
+            alert("Error al procesar la imagen");
+          }
+        });
+    </script>
+  </body>
+</html>
