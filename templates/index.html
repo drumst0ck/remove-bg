@@ -168,12 +168,29 @@
         height: auto;
         margin-bottom: 1rem;
       }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .step-circle {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
     </style>
   </head>
-  <body class="h-full flex flex-col">
+  <body
+    class="h-full flex flex-col bg-gradient-to-br from-indigo-900 to-purple-800"
+  >
     <div class="flex-grow p-8 max-w-7xl mx-auto w-full">
-      <header class="mb-12 text-center">
-        <div class="flex flex-col items-center justify-center mb-4">
+      <header class="mb-2 text-center">
+        <div class="flex flex-col items-center justify-center">
           <img
             src="/static/favicon.png"
             alt="BG Remove Logo"
@@ -258,8 +275,152 @@
           </button>
         </div>
       </main>
+
+      <section class="mt-24 text-white">
+        <h2 class="text-4xl font-bold mb-12 text-center">
+          Why Choose BG Remove?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="feature-card p-8 rounded-xl text-center">
+            <svg
+              class="w-16 h-16 mx-auto mb-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+            <h3 class="text-2xl font-semibold mb-4">Fast and Efficient</h3>
+            <p class="text-white opacity-80">
+              Remove image backgrounds in seconds with our advanced AI
+              technology.
+            </p>
+          </div>
+          <div class="feature-card p-8 rounded-xl text-center">
+            <svg
+              class="w-16 h-16 mx-auto mb-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              ></path>
+            </svg>
+            <h3 class="text-2xl font-semibold mb-4">Easy to Use</h3>
+            <p class="text-white opacity-80">
+              Intuitive interface that allows anyone to achieve professional
+              results.
+            </p>
+          </div>
+          <div class="feature-card p-8 rounded-xl text-center">
+            <svg
+              class="w-16 h-16 mx-auto mb-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+              ></path>
+            </svg>
+            <h3 class="text-2xl font-semibold mb-4">High Quality</h3>
+            <p class="text-white opacity-80">
+              Professional-grade results for your background-free images.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-24 text-white">
+        <h2 class="text-4xl font-bold mb-12 text-center">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div
+              class="step-circle rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-2xl font-bold">1</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Upload Image</h3>
+            <p class="text-white opacity-80">
+              Drag and drop or select your image file
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="step-circle rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-2xl font-bold">2</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Process</h3>
+            <p class="text-white opacity-80">
+              Click "Process Images" and wait a few seconds
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="step-circle rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-2xl font-bold">3</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Download</h3>
+            <p class="text-white opacity-80">
+              Get your background-free image instantly
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-24 text-white">
+        <h2 class="text-4xl font-bold mb-12 text-center">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-8">
+          <div class="feature-card p-6 rounded-xl">
+            <h3 class="text-2xl font-semibold mb-4">
+              What image formats are supported?
+            </h3>
+            <p class="text-white opacity-80">
+              We accept JPG, PNG, and WEBP formats for optimal processing and
+              quality results.
+            </p>
+          </div>
+          <div class="feature-card p-6 rounded-xl">
+            <h3 class="text-2xl font-semibold mb-4">
+              Is BG Remove free to use?
+            </h3>
+            <p class="text-white opacity-80">
+              Yes, BG Remove is completely free to use with no limitations.
+              Enjoy our service without any cost!
+            </p>
+          </div>
+          <div class="feature-card p-6 rounded-xl">
+            <h3 class="text-2xl font-semibold mb-4">
+              How many images can I process?
+            </h3>
+            <p class="text-white opacity-80">
+              There's no limit! You can process as many images as you want, free
+              of charge.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-    <footer class="mt-12 text-center text-white py-4">
+    <footer class="mt-24 text-center text-white py-8 bg-opacity-20 bg-black">
       <p>&copy; 2023 BG Remove. All rights reserved.</p>
     </footer>
     <script>
