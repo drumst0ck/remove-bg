@@ -10,4 +10,5 @@ torchvision
 typing
 scikit-image
 huggingface_hub
+aiohttp
 transformers>=4.39.1
